@@ -1,0 +1,8 @@
+- name: "For including vars"
+  hosts: all
+  tasks:
+          - name: include RedHat-8 variables
+            include_vars: RedHat-8.yml
+
+          - name: include Ubuntu-20 variables
+            include_vars: Ubuntu-20.yml 
