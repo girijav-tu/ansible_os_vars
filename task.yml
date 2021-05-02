@@ -1,0 +1,21 @@
+- hosts: all
+  vars_files:
+          - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+
+  tasks:
+  - name: Installing the package
+    package:
+            name: "{{ package_name }}"
+            state: present 
+
+  - name: Deploying webpages
+    copy:
+            content: "<h1><center> Welcome to {{ ansible_distribution }} OS server !!<center></h1"
+            dest: "{{ document_root }}/index.html"
+
+  - name: Starting services 
+    service:
+            name: "{{ service_name }}"
+            state: started
+             
+
